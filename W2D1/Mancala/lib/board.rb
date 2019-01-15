@@ -45,13 +45,13 @@ class Board
       else
         
         @cups[nextpos] << @cups[start_pos].shift 
+        nextpos += 1
       end 
-      nextpos += 1
     end
 
-    self.render
     ending_cup_idx = (nextpos) % 13
-    self.next_turn(ending_cup_idx)
+    self.next_turn(ending_cup_idx - 1)
+    self.render
   end
 
   def next_turn(ending_cup_idx)
@@ -60,8 +60,8 @@ class Board
       return :switch
     elsif (ending_cup_idx == 6 || ending_cup_idx == 13)
       return :prompt
-    # else
-    #   self.make_move(ending_cup_idx, current_player_name)    
+    else
+      ending_cup_idx 
     end 
   end
 
